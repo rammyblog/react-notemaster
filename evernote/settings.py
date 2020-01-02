@@ -25,7 +25,7 @@ SECRET_KEY = '#c@a82bnozq^&+swws(vrl_nf2g%8#dpi0hqa62t^-&5m8rbma'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['notemaster.herokuapp.com']
+ALLOWED_HOSTS = ['notemaster.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
