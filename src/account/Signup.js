@@ -122,17 +122,10 @@ function SignUp(props) {
   const passwordMatch = (password2) => {
 
     let password1Value = {password1}.password1
-    let password2Value = password2
-
-
-    
-
     if(password1Value !== password2){
       setPasswordMatchError(true)
     }else{
       setPasswordMatchError(false)
-    
-
     }
 
   }

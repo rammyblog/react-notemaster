@@ -68,7 +68,7 @@ ROOT_URLCONF = 'evernote.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'notemaster/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'notemaster/templates'), os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -165,5 +165,8 @@ STATIC_URL = '/static/'
 # EMAIL_HOST_USER = 'onasanyatunde67@gmail.com'
 # EMAIL_HOST_PASSWORD = 'ignatius3151'
 # EMAIL_PORT = 587
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

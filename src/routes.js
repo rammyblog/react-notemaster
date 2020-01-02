@@ -18,7 +18,7 @@ const BaseRouter = () => {
             <Route exact path='/forgot-password/'  component={ForgotPassword}/> 
             <Route exact path='/reset-password/:uid/:token/'  component={ResetPasswordConfirm}/> 
             <Route exact path='/password-reset/done/' component={ForgotPasswordConfirmed} />
-            <Route exact path='/dashboard/' component={DashboardComponent} />
+            <Route exact path='/(dashboard|/)/' component={DashboardComponent} />
 
 
         </div>
