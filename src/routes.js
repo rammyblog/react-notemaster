@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './account/Login';
 import Signup from './account/Signup';
 import ForgotPassword from './account/ForgotPassword'
@@ -18,7 +18,19 @@ const BaseRouter = () => {
             <Route exact path='/forgot-password/'  component={ForgotPassword}/> 
             <Route exact path='/reset-password/:uid/:token/'  component={ResetPasswordConfirm}/> 
             <Route exact path='/password-reset/done/' component={ForgotPasswordConfirmed} />
-            <Route exact path='/(dashboard|/)/' component={DashboardComponent} />
+            <Route path='/(dashboard|/)/' component={DashboardComponent} />
+
+            <Switch>
+            {["/", "/dashboard"].map(path => (
+                <Route
+                key={path}
+                exact
+                path={path}
+                render={() => <DashboardComponent/>}
+                />
+            ))}
+            
+            </Switch>
 
 
         </div>

@@ -21,6 +21,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import * as actions from '../store/actions/auth';
 import Tooltip from '@material-ui/core/Tooltip';
+import { Redirect, withRouter } from 'react-router-dom';
+
 
 class DashboardComponent extends React.Component{
 
@@ -77,6 +79,7 @@ class DashboardComponent extends React.Component{
 
     if(!sessionTimeout){
       this.props.history.push('/login/')
+  
     }else{
       this.getNotesFromDb()
 
@@ -274,7 +277,8 @@ deleteNote = async (note) => {
 </main> 
         </div>
       :
-      this.props.history.push('/login/')
+      <Redirect to="/login" />
+      
 
       }
       </Fragment>
@@ -303,4 +307,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DashboardComponent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DashboardComponent)));
