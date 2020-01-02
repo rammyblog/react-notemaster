@@ -36,7 +36,7 @@ class DashboardComponent extends React.Component{
   }
 
   getNotesFromDb = () => {
-    axios.get('http://127.0.0.1:8000/api/notes/').then(
+    axios.get('https://notemaster.herokuapp.com/api/notes/').then(
       res =>  this.setState({
         notes: res.data
       })  
@@ -94,7 +94,7 @@ class DashboardComponent extends React.Component{
 
 noteUpdate = (id, noteObj) =>{
 
-  axios.put(`http://127.0.0.1:8000/api/notes/${id}/`, {
+  axios.put(`https://notemaster.herokuapp.com/api/notes/${id}/`, {
     title: noteObj.title,
     body:noteObj.body
   });
@@ -109,7 +109,7 @@ newNote = async(title) => {
     body: ''
   }
 
-  const newFromDB = await axios.post(`http://127.0.0.1:8000/api/notes/`, {
+  const newFromDB = await axios.post(`https://notemaster.herokuapp.com/api/notes/`, {
     title: note.title,
     body: note.body
   });
@@ -149,7 +149,7 @@ deleteNote = async (note) => {
     })
   }
 
-  axios.delete(`http://127.0.0.1:8000/api/notes/${note.id}/`)
+  axios.delete(`https://notemaster.herokuapp.com/api/notes/${note.id}/`)
 }
 
   

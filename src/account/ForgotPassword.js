@@ -76,7 +76,7 @@ function ForgotPassword(props) {
   function handleSubmit (e) {
     e.preventDefault();    
     const email = e.target.email.value
-    axios.post('http://127.0.0.1:8000/api/auth/password/reset/', {
+    axios.post('https://notemaster.herokuapp.com/api/auth/password/reset/', {
         email: email
     }).then(
         res => {

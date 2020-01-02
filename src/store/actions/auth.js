@@ -61,7 +61,7 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin =  (username, password) => {
     return  async (dispatch)  => {
         dispatch(authStart())
-        await axios.post('http://127.0.0.1:8000/api/auth/login/', {
+        await axios.post('https://notemaster.herokuapp.com/api/auth/login/', {
             username:username,
             password:password
         }).then(res => {
@@ -88,7 +88,7 @@ export const authLogin =  (username, password) => {
 export const authSignup = (firstname, lastname, username, email, password1, password2) => {
     return async(dispatch) => {
         dispatch(authStart())
-        await axios.post('http://127.0.0.1:8000/api/auth/registration/', {
+        await axios.post('https://notemaster.herokuapp.com/api/auth/registration/', {
             username:username,
             email:email,
             first_name: firstname,

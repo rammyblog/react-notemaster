@@ -72,7 +72,7 @@ function ResetPasswordConfirm(props) {
     const uid = props.match.params.uid
     const token = props.match.params.token
 
-    axios.post('http://127.0.0.1:8000/api/auth/password/reset/confirm/', {
+    axios.post('https://notemaster.herokuapp.com/api/auth/password/reset/confirm/', {
         uid:uid,    
         token:token,    
         new_password1: new_password1,
