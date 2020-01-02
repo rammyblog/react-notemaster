@@ -21,7 +21,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import * as actions from '../store/actions/auth';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 class DashboardComponent extends React.Component{
@@ -72,6 +72,8 @@ class DashboardComponent extends React.Component{
 
   componentDidMount(){
     this.props.onTryAutoSignup(this.props.username);
+    console.log(this.state.selectedNote);
+    
     this.setState({
       user : localStorage.getItem('user') || this.props.username
     })
@@ -162,16 +164,16 @@ deleteNote = async (note) => {
     const token = localStorage.getItem('token');
     const {classes} = this.props
 
-  const handleDrawerOpen = () => {
-    this.setState({
-      open: true});
-  };
+    const handleDrawerOpen = () => {
+        this.setState({
+          open: true});
+      };
 
-  const handleDrawerClose = () => {
-    this.setState({
-      open: false});
-  
-  };
+      const handleDrawerClose = () => {
+        this.setState({
+          open: false});
+      
+      };
 
 
 
@@ -183,7 +185,9 @@ deleteNote = async (note) => {
       this.props.token || token ?
 
       <div className={classes.root}>
+     
       <CssBaseline />
+      
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -203,10 +207,11 @@ deleteNote = async (note) => {
           <Typography variant="h6" noWrap>
             Notemaster 
           </Typography>
+
           <Tooltip title="Log out">
             <ExitToAppIcon className='log-out-icon' onClick={this.props.logout}/>
-
-        </Tooltip>
+         </Tooltip>
+         
         </Toolbar>
       </AppBar>
 
@@ -243,42 +248,37 @@ deleteNote = async (note) => {
            <div className={classes.drawerHeader} />
          {
            this.state.selectedNote ?
-           
-           
-           
+
            <EditorComponent selectedNote={this.state.selectedNote}
             selectedNoteIndex={this.state.selectedNoteIndex} 
             notes={this.state.notes}
             noteUpdate={this.noteUpdate}/>
             :
-
+            <Fragment>
             <div className={classes.paper}>
-            <Typography className='welcome_Header' >
-              Welcome to Notemaster <span className='capitalize'>{this.state.user}</span>
-              
-            </Typography>
+              <Typography className='welcome_Header' >
+                Welcome to Notemaster <span className='capitalize'>{this.state.user}</span>
+                
+              </Typography>
 
-            <Typography className='welcome'>
-              Notemaster is a web app used to store important notes. <br/>
-              Just like Google Keep
-            </Typography>
+              <Typography className='welcome'>
+                Notemaster is a web app used to store important notes. <br/>
+                Just like Google Keep
+              </Typography>
 
-            <Typography className='welcome'>
-            Click on the Hamburger Icon on top left to continue
-            </Typography>
-
-
-
-            
+              <Typography className='welcome'>
+              Click on the Hamburger Icon on top left to continue
+              </Typography>
 
           </div>
+          </Fragment>
          }
 
 </main> 
         </div>
       :
-      <Redirect to="/login" />
-      
+      this.props.history.push('/login/')
+
 
       }
       </Fragment>

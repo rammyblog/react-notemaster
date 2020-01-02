@@ -58,50 +58,33 @@ function SignIn(props, state) {
   
 
   const [errResponse, setErrResponse] = React.useState()
-  // const [errors, setErrors] = React.useState(true);
-  const [usernameErrors, setUsernameErrors] = React.useState(true);
-  const [passwordErrors, setPasswordErrors] = React.useState(true);
+  const [ username, setUsername ] = React.useState('')
+
+  const [ password, setPassword ] = React.useState('')
+
   
 
 
 
 
-  function validator(textValue, nameField) {
+  function validator() {
 
-    if(lengthValidator(textValue) > 0){
-      
-      if(nameField === 'password'){
-        setPasswordErrors(false)
-      }else{
 
-        setUsernameErrors(false)
-  
-      }
-    }else{
-    
-          setUsernameErrors(true)
-          setPasswordErrors(true)
-
-    
-        }
-  
-  }
+    let usernameValue = {username}.username
+    let passwordValue = {password}.password
 
 
 
-  function lengthValidator(e) {
-    return e.length
-  }
-
-  function errorFunction() {
- 
-    if(usernameErrors === false && passwordErrors === false ){
-
+    if(usernameValue !== '' && passwordValue !== ''){
       return false
     }else{
       return true
     }
   }
+
+
+
+  
 
 
   async function handleSubmit (e) {
@@ -169,10 +152,11 @@ function SignIn(props, state) {
             label="Username"
             name="username"
             autoFocus
-            
+    
          
             onChange = {event => {  
-              validator(event.target.value, event.target.name)
+              setUsername(event.target.value)
+              validator()
               
 
           }}
@@ -187,12 +171,14 @@ function SignIn(props, state) {
             label="Password"
             type="password"
             id="password"
+         
             autoComplete="current-password"
           
             onChange={event => {
+              setPassword(event.target.value)
               
-                validator(event.target.value, event.target.name)
-                errorFunction()
+                validator()
+
               
 
             }}
@@ -207,7 +193,7 @@ function SignIn(props, state) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            disabled= {errorFunction()}
+            disabled= {validator()}
             
           >
             {

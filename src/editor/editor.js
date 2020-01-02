@@ -87,10 +87,7 @@ class EditorComponent extends React.Component{
                 <CKEditor
                     editor={ ClassicEditor }
                     data={this.state.text}
-                    onInit={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
+            
                     onChange={ ( event, editor ) => {
                         const data = editor.getData();
                         this.updateBody(data)

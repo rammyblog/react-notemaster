@@ -33,8 +33,8 @@ class SidebarItemComponent extends Component {
                             onClick={() => this.selectNote(_note, _index)}>
                             
                             <ListItemText
-                            primary={_note.title}
-                            secondary={removeHTMLTags(_note.body.substring(0,30))+'...'}></ListItemText>
+                            primary={_note.title.substring(0,15)+'...'}
+                            secondary={removeHTMLTags(_note.body.substring(0,15))+'...'}></ListItemText>
                         </div>
                     
                     <DeleteIcon 

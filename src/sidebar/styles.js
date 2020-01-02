@@ -32,7 +32,7 @@ const styles = theme => ({
     },
     sidebarContainer: {
       marginTop: '0px',
-      width: '300px',
+      width: 'auto',
       height: '100%',
       boxSizing: 'border-box',
       float: 'left',
